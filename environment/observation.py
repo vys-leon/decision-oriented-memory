@@ -1,10 +1,9 @@
-from .entities import WorldState
+from .entities import Situation
 
 class ObservationGenerator:
-    def generate(self, state: WorldState) -> str:
-        observation = "Ты находишься в " + state.location + \
-        ". Ты замечаешь " + state.object + \
-        ". Твои возможные действия: \n" + \
-        "\n".join(state.actions) + \
-        "\nВыбери действие и укажи его в ответе."
+    def generate(self, situation: Situation) -> str:
+        observation = f"""
+You are in a {situation.location}.
+You see a {situation.object.description}.
+        """
         return observation
